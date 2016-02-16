@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <LINK href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  </head>
+  <body>
+      <!-- Div to show the place list-->
+    <div id="place-list">
+      <button type="button" id="addNewPlaceBtn">+ Add New</button>
+      <table>
+          <tr>
+              <th>
+                  Name
+              </th>
+              <th>
+                  Address
+              </th>
+              <th>
+                  Owner
+              </th>
+          </tr>
+      </table>
+    </div>
+    
+    <!-- Div to show the seleccted map -->
+    <div id="place-details">
+        <div id="place-details-left">
+            <div class="details-heading">
+                <h4>Tokyo apartment with view</h4>    
+            </div>
+            <div class="estate-details">
+                <div class="address">
+                    Address :
+                </div>
+                <div class="owner">
+                    Owner :
+                </div> 
+                <div class="Latitude">
+                    Address :
+                </div>
+                <div class="Longitude">
+                    Owner :
+                </div> 
+            </div>
+            <div class="edit-details">
+                <u><a>Edit</a></u>
+            </div>
+        </div>
+        <div id="map-details-right">
+            <img src="" alt="google maps"/>            
+        </div>
+    </div>
+  </body>
+</html>
