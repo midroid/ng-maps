@@ -17,7 +17,7 @@ angular.module('ng-maps', [])
                     longitude : ''
                 }
             };
-        
+        propertyList.propertyFormData = propertyList.propertyModel;
         
         propertyList.properties = [ 
                           { 
@@ -85,11 +85,8 @@ angular.module('ng-maps', [])
                 propertyList.properties[index] = propertyList.propertyModel;
                 console.log(propertyList.properties[index]);
             }
-            propertyList.name = '';
-            propertyList.address = '';
-            propertyList.ownername = '';
-            propertyList.coordinateslatitude = '';
-            propertyList.coordinateslongitude = '';
+            
+            propertyList.propertyModel = {};
             
         };
         
@@ -104,12 +101,12 @@ angular.module('ng-maps', [])
             propertyList.propertyDetailCoordinatesLongitude = property.coordinates.longitude;
             propertyList.propertyDetailCoordinatesLatitude = property.coordinates.latitude;
             console.log(property.coordinates.latitude);
-            propertyList.propertyModel = property;
+            propertyList.propertyFormData = property;
             propertyList.moveToLocation(property.coordinates.latitude, property.coordinates.longitude);
         };
         
         propertyList.editPropertyDetails = function() {
-            
+            propertyList.propertyModel = propertyList.propertyFormData;
         }
         
         
