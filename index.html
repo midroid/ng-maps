@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js"></script>
     <script src="controller/ng-maps.js"></script>
+    <script src="validation/geolocationValidator.js"></script>
   </head>
   <body ng-controller="PropertyListController as propertyList">
       <!-- Div to show the place list-->
@@ -68,47 +69,66 @@
     
     <!-- Div to edit the property details-->
     <div class="edit-property-details" id="property-details-form">
-        <form ng-submit="propertyList.addProperty()">
+        <form name="form" novalidate ng-submit="propertyList.addProperty()">
             <div class="property-info">
                     <div class="form-group">
                         <label for="">Title :</label>
                         <input 
+                            name="name"
                             type="text"
                             ng-model="propertyList.propertyModel.name"
-                            class="form-control"/>
+                            class="form-control"
+                            required/>
                     </div>
+                    <div ng-show="form.name.$invalid && !form.name.$pristine">Property Name Required</div>
                     <div class="form-group">
                         <label for="">Address:</label>
                         <input 
+                            name="address"
                             type="text"
                             ng-model="propertyList.propertyModel.address"
-                            class="form-control"/>
+                            class="form-control"
+                            required/>
                     </div>
+                    <div ng-show="form.address.$invalid && !form.address.$pristine">Property Address Required</div>
                     <div class="form-group">
                         <label for="">Owner:</label>
                         <input 
+                            name="owner"
                             type="text" 
                             ng-model="propertyList.propertyModel.owner.name"
-                            class="form-control"/>
+                            class="form-control"
+                            required/>
                     </div>
+                    <div ng-show="form.owner.$invalid && !form.owner.$pristine">Property Owner Required</div>
                     <div class="form-group">
                         <label for="">Latitude:</label>
                         <input 
                             type="text" 
+                            name="latitude"
                             ng-model="propertyList.propertyModel.coordinates.latitude"
-                            class="form-control"/>
+                            class="form-control"
+                            geolocation
+                            required/>
                     </div>
+                    <div ng-show="form.latitude.$invalid && !form.latitude.$pristine">Property Owner Required</div>
+                    <span ng-show="form.latitude.$error.geolocation">The value is not a valid geolocation!</span>
                     <div class="form-group">
                         <label for="">Longitude:</label>
                         <input 
-                            type="text" 
+                            type="text"
+                            name="longitude"
                             ng-model="propertyList.propertyModel.coordinates.longitude"
-                            class="form-control"/>
+                            class="form-control"
+                            geolocation
+                            required/>
                     </div>
+                    <div ng-show="form.longitude.$invalid && !form.longitude.$pristine">Property Owner Required</div>
+                    <span ng-show="form.longitude.$error.geolocation">The value is not a valid geolocation!</span>
             </div>
             <div class="edit-control-btn">
                 <button type="button" ng-click="propertyList.btnCancel();">Cancel</button>
-                <button type="submit">Save</button>
+                <button type="submit" ng-disabled="form.$invalid">Save</button>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-angular.module('ng-maps', [])
+var app = angular.module('ng-maps', [])
     .controller('PropertyListController', function() {
         
         var propertyList = this;
