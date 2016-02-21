@@ -128,6 +128,11 @@ angular.module('ng-maps', [])
             var center = new google.maps.LatLng(latitude, longitude);
             propertyList.map.panTo(center);
         }
-                        
+               
+        propertyList.addNewProperty = function() {
+            document.getElementById('place-details').style.display = 'none';
+            document.getElementById('property-details-form').style.display = 'block';
+            document.getElementById('property-details-form').scrollIntoView();
+        }         
         
     });

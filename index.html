@@ -9,7 +9,7 @@
   <body ng-controller="PropertyListController as propertyList">
       <!-- Div to show the place list-->
     <div class="place-list" >
-      <button type="button" id="addNewPlaceBtn">+ Add New</button>
+      <button type="button" ng-click="propertyList.addNewProperty()" id="addNewPlaceBtn">+ Add New</button>
       <table>
           <tr>
               <th>
