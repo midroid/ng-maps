@@ -92,6 +92,8 @@ angular.module('ng-maps', [])
         
         propertyList.btnCancel = function() {
             propertyList.propertyModel = {};
+            document.getElementById('property-details-form').style.display = 'none';
+            document.getElementById('place-details').style.display = 'block';
         };
         
         propertyList.showPropertyDetails = function(property) {
@@ -102,11 +104,15 @@ angular.module('ng-maps', [])
             propertyList.propertyDetailCoordinatesLatitude = property.coordinates.latitude;
             console.log(property.coordinates.latitude);
             propertyList.propertyFormData = property;
+            document.getElementById('place-details').scrollIntoView();
             propertyList.moveToLocation(property.coordinates.latitude, property.coordinates.longitude);
         };
         
         propertyList.editPropertyDetails = function() {
+            document.getElementById('place-details').style.display = 'none';
+            document.getElementById('property-details-form').style.display = 'block';
             propertyList.propertyModel = propertyList.propertyFormData;
+            
         }
         
         

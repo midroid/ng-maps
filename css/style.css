@@ -75,3 +75,6 @@ table {
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
+#property-details-form {
+    display : none;
+}
