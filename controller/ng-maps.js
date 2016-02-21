@@ -86,6 +86,11 @@ angular.module('ng-maps', [])
                 console.log(propertyList.properties[index]);
             }
             
+            //After save, show the latest property in the detail
+            document.getElementById('property-details-form').style.display = 'none';
+            document.getElementById('place-details').style.display = 'block';
+            
+            //clear the property model
             propertyList.propertyModel = {};
             
         };
