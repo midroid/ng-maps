@@ -64,3 +64,14 @@ table {
     border: 1px solid black;
     width:100%;
 }
+#map {
+    height:150px;
+    width:180px;
+    margin-top:5px;
+    background-color: #ccc;
+}
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}

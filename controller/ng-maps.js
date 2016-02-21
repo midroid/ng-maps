@@ -134,6 +134,43 @@ angular.module('ng-maps', [])
         propertyList.editPropertyDetails = function() {
             
         }
+        
+        var mapOptions = {
+            zoom :13,
+            center : new google.maps.LatLng(35.656577, 139.703372),
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        } 
+        
+        propertyList.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        
+        propertyList.markers = [];
+        
+        var infoWindow = new google.maps.InfoWindow();
+        
+        var createMarker = function(info) {
+            var marker = new google.maps.Marker({
+                map: propertyList.map,
+                position: new google.maps.LatLng(info.coordinates.latitude, info.coordinates.longitude),
+                title: info.name
+            });
+            
+            marker.content = '<div class="infoWindowContent">'+info.address+'</div>';
+            
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.setContent('<h2>'+ marker.title + '</h2>'+ marker.content);
+                infoWindow.open(propertyList.map, marker);
+            });
+            propertyList.markers.push(marker);
+        }
+        
+        for(i = 0; i < propertyList.properties.length; i++) {
+            createMarker(propertyList.properties[i]);
+        }
+        
+        propertyList.openInfoWindow = function(e, selectedMarker) {
+            e.preventDefault();
+            google.maps.event.trigger(selectedMarker, 'click');
+        }
                         
                         
         
