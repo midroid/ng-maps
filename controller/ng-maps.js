@@ -38,9 +38,9 @@ angular.module('ng-maps', [])
                         
                             coordinates: { 
                         
-                              latitude: 35.1, 
+                              latitude: 35.656577, 
                         
-                              longitude: 139.5 
+                              longitude: 139.703372
                         
                             } 
                         
@@ -63,9 +63,9 @@ angular.module('ng-maps', [])
                         
                             coordinates: { 
                         
-                              latitude: 35.2, 
+                              latitude: 35.656577,  
                         
-                              longitude: 140.5 
+                              longitude: 139.703372
                         
                             } 
                         
@@ -119,59 +119,26 @@ angular.module('ng-maps', [])
             propertyList.propertyDetailCoordinatesLongitude = property.coordinates.longitude;
             propertyList.propertyDetailCoordinatesLatitude = property.coordinates.latitude;
             console.log(property.coordinates.latitude);
-            console.log(property);
             propertyList.propertyModel = property;
-            console.log(propertyList.propertyModel);
-            // propertyList.propertyModel.id = ;
-            // propertyList.propertyModel.name = ;
-            // propertyList.propertymodel.address = ;
-            // propertyList.propertymodel.owner.id = ;
-            // propertyList.propertyModel.owner.name = ;
-            // propertyList.propertyModel.coordinates.latitude = ;
-            // propertyList.propertyModel.coordinates.longitude = ;
+            propertyList.moveToLocation(property.coordinates.latitude, property.coordinates.longitude);
         };
         
         propertyList.editPropertyDetails = function() {
             
         }
         
-        var mapOptions = {
+        propertyList.mapOptions = {
             zoom :13,
             center : new google.maps.LatLng(35.656577, 139.703372),
             mapTypeId: google.maps.MapTypeId.TERRAIN
         } 
         
-        propertyList.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        propertyList.map = new google.maps.Map(document.getElementById('map'), propertyList.mapOptions);
         
-        propertyList.markers = [];
-        
-        var infoWindow = new google.maps.InfoWindow();
-        
-        var createMarker = function(info) {
-            var marker = new google.maps.Marker({
-                map: propertyList.map,
-                position: new google.maps.LatLng(info.coordinates.latitude, info.coordinates.longitude),
-                title: info.name
-            });
-            
-            marker.content = '<div class="infoWindowContent">'+info.address+'</div>';
-            
-            google.maps.event.addListener(marker, 'click', function() {
-                infoWindow.setContent('<h2>'+ marker.title + '</h2>'+ marker.content);
-                infoWindow.open(propertyList.map, marker);
-            });
-            propertyList.markers.push(marker);
+        propertyList.moveToLocation = function(latitude, longitude) {
+            var center = new google.maps.LatLng(latitude, longitude);
+            propertyList.map.panTo(center);
         }
-        
-        for(i = 0; i < propertyList.properties.length; i++) {
-            createMarker(propertyList.properties[i]);
-        }
-        
-        propertyList.openInfoWindow = function(e, selectedMarker) {
-            e.preventDefault();
-            google.maps.event.trigger(selectedMarker, 'click');
-        }
-                        
                         
         
     });
