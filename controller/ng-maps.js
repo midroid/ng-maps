@@ -133,6 +133,8 @@ angular.module('ng-maps', [])
             document.getElementById('place-details').style.display = 'none';
             document.getElementById('property-details-form').style.display = 'block';
             document.getElementById('property-details-form').scrollIntoView();
-        }         
+        }    
+        
+        propertyList.showPropertyDetails(propertyList.properties[0]);
         
     });
