@@ -72,22 +72,11 @@ angular.module('ng-maps', [])
                           }
                         ];
                         
+        propertyList.enableDetailView = false;
+                        
         propertyList.addProperty = function() {
             var len = propertyList.properties.length;
             console.log('length before' + len);
-            // propertyList.properties.push({
-            //     id : len,
-            //     name : propertyList.name,
-            //     address : propertyList.address,
-            //     owner : { 
-            //         id : 1,
-            //         name : propertyList.ownername
-            //     },
-            //     coordinates : { 
-            //         latitude : propertyList.coordinateslatitude,
-            //         longitude : propertyList.coordinateslongitude
-            //     }
-            // });
 
             if(propertyList.properties.indexOf(propertyList.propertyModel) == -1) {
                 propertyList.properties.push(propertyList.propertyModel);
@@ -105,11 +94,7 @@ angular.module('ng-maps', [])
         };
         
         propertyList.btnCancel = function() {
-            propertyList.name = '';
-            propertyList.address = '';
-            propertyList.ownername = '';
-            propertyList.coordinateslatitude = '';
-            propertyList.coordinateslongitude = '';
+            propertyList.propertyModel = {};
         };
         
         propertyList.showPropertyDetails = function(property) {
@@ -126,6 +111,7 @@ angular.module('ng-maps', [])
         propertyList.editPropertyDetails = function() {
             
         }
+        
         
         propertyList.mapOptions = {
             zoom :13,
