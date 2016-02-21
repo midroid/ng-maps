@@ -76,14 +76,12 @@ var app = angular.module('ng-maps', [])
                         
         propertyList.addProperty = function() {
             var len = propertyList.properties.length;
-            console.log('length before' + len);
 
             if(propertyList.properties.indexOf(propertyList.propertyModel) == -1) {
                 propertyList.properties.push(propertyList.propertyModel);
             } else {
                 var index = propertyList.properties.indexOf(propertyList.propertyModel);
                 propertyList.properties[index] = propertyList.propertyModel;
-                console.log(propertyList.properties[index]);
             }
             
             //After save, show the latest property in the detail
@@ -107,7 +105,6 @@ var app = angular.module('ng-maps', [])
             propertyList.propertyDetailOwner = property.owner.name;
             propertyList.propertyDetailCoordinatesLongitude = property.coordinates.longitude;
             propertyList.propertyDetailCoordinatesLatitude = property.coordinates.latitude;
-            console.log(property.coordinates.latitude);
             propertyList.propertyFormData = property;
             document.getElementById('place-details').scrollIntoView();
             propertyList.moveToLocation(property.coordinates.latitude, property.coordinates.longitude);
