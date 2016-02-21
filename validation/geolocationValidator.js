@@ -1,4 +1,4 @@
-var GEOLOCATION_REGEXP = /^-?\d{1,2}\.\d{6}$/ ;
+var GEOLOCATION_REGEXP = /^-?\d{1,3}\.\d{6}$/ ;
 app.directive('geolocation', function() {
   return {
     require: 'ngModel',
