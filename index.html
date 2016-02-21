@@ -111,8 +111,8 @@
                             geolocation
                             required/>
                     </div>
-                    <div ng-show="form.latitude.$invalid && !form.latitude.$pristine">Property Owner Required</div>
-                    <span ng-show="form.latitude.$error.geolocation">The value is not a valid geolocation!</span>
+                    <div ng-show="form.latitude.$invalid && !form.latitude.$pristine">Property latitude ex: 12.345678</div>
+                    <span ng-show="form.latitude.$error.geolocation">The value is not a valid geolocation(latitude)!</span>
                     <div class="form-group">
                         <label for="">Longitude:</label>
                         <input 
@@ -123,13 +123,15 @@
                             geolocation
                             required/>
                     </div>
-                    <div ng-show="form.longitude.$invalid && !form.longitude.$pristine">Property Owner Required</div>
-                    <span ng-show="form.longitude.$error.geolocation">The value is not a valid geolocation!</span>
+                    <div ng-show="form.longitude.$invalid && !form.longitude.$pristine">Property longitude ex: 12.456789</div>
+                    <span ng-show="form.longitude.$error.geolocation">The value is not a valid geolocation(longitude)!</span>
+                    <div ng-show="form.$invalid">All the fields are required</div>
             </div>
             <div class="edit-control-btn">
                 <button type="button" ng-click="propertyList.btnCancel();">Cancel</button>
                 <button type="submit" ng-disabled="form.$invalid">Save</button>
             </div>
+            
         </form>
     </div>
   </body>
